@@ -15,6 +15,16 @@ new Vue({
       };
       this.todos.push(newTodo);
       console.log(this.todos);
+    },
+    removeTodo(todo){
+      var id = todo.id;
+      for (var i = 0; i < this.todos.length; i++){
+        if (this.todos[i].id == id) {
+          this.todos.splice(i,1);
+          console.log(this.todos);
+          break;
+        }
+      }
     }
   }
 });

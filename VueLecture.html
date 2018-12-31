@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8">
     <title>Title</title>
   </head>
   <body>
     <div id="app">
-      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+      <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>-->
+      <script src="http://unpkg.com/vue"></script>
       <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 
       <input type="text" v-model="userInput">
       <button v-on:click="addTodo"> Add Todo </button>
       <ul>
-        <li v-for="todo in todos">{{ todo.value }}</li>
+        <li
+          v-for="todo in todos"
+          v-on:click="removeTodo(todo)">{{ todo.value }}</li>
       </ul>
 
       <script src="VueLecture.js"></script>

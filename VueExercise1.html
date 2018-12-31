@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="VueExercise1.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id="app">
+  <app-username
+    v-bind:username="'Chris'"
+    v-on:userclicked="userWasClicked($event)"
+  ></app-username>                                <!--With props array, v-bind sets username outside our Vue component. Does not require function returning object-->
+  <app-username v-bind:username="'Anna'"></app-username>                                 <!--With props array, v-bind sets username outside our Vue component. Does not require function returning object-->
+  <!--<app-username></app-username>                                                          &lt;!&ndash;Since this is a Vue component, this element will not be ignored. Requires function returning object&ndash;&gt;-->
+  <p v-bind:class="{updated: name == 'Max' ? false: true}">{{ name }}</p>
+  <p v-if= "name == 'Max' ? false: true">Name Updated!</p>
+  <button v-on:click="changeName" >Change Name</button>
+  <button v-on:click="addElement">New Element</button>
+  <ul>
+    <li v-for="element in elements"
+    v-bind:id = "'el' + element"
+    v-bind:style="{backgroundColor: getColor(element)}">Element {{ element }}</li>
+  </ul>
+</div>
+
+<div id="app2">
+  <p>Second Vue Instance</p>
+  <input type="text" v-model="message">            <!--Two way binding setup-->
+  <p>{{message}}</p>
+</div>
+<div class="username">{{ username }}</div>
+<div class="username">{{ username }}</div>                      <!--this Vue instance of username will be ignored-->
+
+<script src="VueExercise1.js"></script>
+</body>
+</html>
